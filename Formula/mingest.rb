@@ -5,17 +5,17 @@ class Mingest < Formula
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/harrisonwang/media-ingest/releases/download/v0.4.1/media-ingest_v0.4.1_darwin_arm64_bundled.tar.gz"
-      sha256 "df2c080a53d2137b4579f81f7ed0117cbc5dae2449f71a03c0640fe3b28565a8"
+      url "https://github.com/harrisonwang/media-ingest/releases/download/v0.4.2/media-ingest_v0.4.2_darwin_arm64_bundled.tar.gz"
+      sha256 "444bd2370f8631f91ee42b6fe4f4e311f698d61f8ef339b18dc2a41511c52f0b"
     else
-      url "https://github.com/harrisonwang/media-ingest/releases/download/v0.4.1/media-ingest_v0.4.1_darwin_amd64_bundled.tar.gz"
-      sha256 "3c08e9fa565a581c2351c3a9e9ed93e41b0bb951e71f979e0c0633ce6c2e7aec"
+      url "https://github.com/harrisonwang/media-ingest/releases/download/v0.4.2/media-ingest_v0.4.2_darwin_amd64_bundled.tar.gz"
+      sha256 "4b2bb5a26263c1b290e8db67a9aa5ee587792d9d29db9368083037cf98a1f2c0"
     end
   end
 
   on_linux do
-    url "https://github.com/harrisonwang/media-ingest/releases/download/v0.4.1/media-ingest_v0.4.1_linux_amd64_bundled.tar.gz"
-    sha256 "3b2152c52fad059a1443030830372b5d4477570ea51a3a27367abc14a44f9b01"
+    url "https://github.com/harrisonwang/media-ingest/releases/download/v0.4.2/media-ingest_v0.4.2_linux_amd64_bundled.tar.gz"
+    sha256 "8b9fe433693412f5bba7282bc3f8372c7bb877854f7d2ab1b4b22fc8e3f4c4a1"
   end
 
   def install

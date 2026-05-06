@@ -1,21 +1,28 @@
 class Mingest < Formula
   desc "Local video archiving CLI powered by yt-dlp and ffmpeg"
-  homepage "https://github.com/harrisonwang/media-ingest"
+  homepage "https://github.com/harrisonwang/mingest"
+  version "0.4.1"
   license "AGPL-3.0-only"
 
+  depends_on "yt-dlp"
+  depends_on "ffmpeg"
+  depends_on "deno"
+
   on_macos do
-    if Hardware::CPU.arm?
-      url "https://github.com/harrisonwang/media-ingest/releases/download/v0.4.1/media-ingest_v0.4.1_darwin_arm64_bundled.tar.gz"
-      sha256 "df2c080a53d2137b4579f81f7ed0117cbc5dae2449f71a03c0640fe3b28565a8"
-    else
-      url "https://github.com/harrisonwang/media-ingest/releases/download/v0.4.1/media-ingest_v0.4.1_darwin_amd64_bundled.tar.gz"
-      sha256 "3c08e9fa565a581c2351c3a9e9ed93e41b0bb951e71f979e0c0633ce6c2e7aec"
+    on_arm do
+      url "https://github.com/harrisonwang/mingest/releases/download/v0.4.1/media-ingest_v0.4.1_darwin_arm64_slim.tar.gz"
+      sha256 "c516aab3c6f06cda70382692ef8a31acef9a621a1fb7bfca7917234dbc63e8d2"
+    end
+
+    on_intel do
+      url "https://github.com/harrisonwang/mingest/releases/download/v0.4.1/media-ingest_v0.4.1_darwin_amd64_slim.tar.gz"
+      sha256 "29323a34a6ccc47f6ed411e7cd73e7c603fe0e8e8f95f5b7b105be385cdde7b0"
     end
   end
 
   on_linux do
-    url "https://github.com/harrisonwang/media-ingest/releases/download/v0.4.1/media-ingest_v0.4.1_linux_amd64_bundled.tar.gz"
-    sha256 "3b2152c52fad059a1443030830372b5d4477570ea51a3a27367abc14a44f9b01"
+    url "https://github.com/harrisonwang/mingest/releases/download/v0.4.1/media-ingest_v0.4.1_linux_amd64_slim.tar.gz"
+    sha256 "b6ef1dd936d91861657fe64e3a129beefec838d7f3e1459d5b94d8411f4b970c"
   end
 
   def install

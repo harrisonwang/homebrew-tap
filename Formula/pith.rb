@@ -22,7 +22,7 @@ class Pith < Formula
   end
 
   def install
-    bin.install "pith/pith"
+    bin.install "pith"
   end
 
   test do

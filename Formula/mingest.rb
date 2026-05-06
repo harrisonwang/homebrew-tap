@@ -26,7 +26,7 @@ class Mingest < Formula
   end
 
   def install
-    bin.install "mingest/mingest"
+    bin.install "mingest"
   end
 
   test do

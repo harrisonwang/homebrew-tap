@@ -1,28 +1,28 @@
 class Mingest < Formula
   desc "Local video archiving CLI powered by yt-dlp and ffmpeg"
   homepage "https://github.com/harrisonwang/mingest"
-  version "0.5.0"
+  version "0.6.1"
   license "AGPL-3.0-only"
 
   depends_on "yt-dlp"
   depends_on "ffmpeg"
-  depends_on "deno"
+  depends_on "node"
 
   on_macos do
     on_arm do
-      url "https://github.com/harrisonwang/mingest/releases/download/v0.5.0/mingest_v0.5.0_darwin_arm64_slim.tar.gz"
-      sha256 "4632b42c28d45f45c582de5459387cdcc7f2cafd7c517fbf984fc8cf303ba0bd"
+      url "https://github.com/harrisonwang/mingest/releases/download/v0.6.1/mingest_v0.6.1_darwin_arm64_slim.tar.gz"
+      sha256 "e40c4aa88180a3ae3da7ae29cff17e9644ae780ba8c2fb89a64b90aa4bb5eff0"
     end
 
     on_intel do
-      url "https://github.com/harrisonwang/mingest/releases/download/v0.5.0/mingest_v0.5.0_darwin_amd64_slim.tar.gz"
-      sha256 "00053de8fbd56cf2fe04e944c0a14809b5d3cd0f379c3ee4a1c805e4e215cdf9"
+      url "https://github.com/harrisonwang/mingest/releases/download/v0.6.1/mingest_v0.6.1_darwin_amd64_slim.tar.gz"
+      sha256 "7ab2d9a346040d039aee0c42a574e26d70a8c5f16e069304fb9d1d0a8ec39f19"
     end
   end
 
   on_linux do
-    url "https://github.com/harrisonwang/mingest/releases/download/v0.5.0/mingest_v0.5.0_linux_amd64_slim.tar.gz"
-    sha256 "a71c0f30be4a724671e43164a952a72a86a03cf4f3f8e62d80ae79adaf63a859"
+    url "https://github.com/harrisonwang/mingest/releases/download/v0.6.1/mingest_v0.6.1_linux_amd64_slim.tar.gz"
+    sha256 "1bf7857872d9b06c7a844cc18859620676883526030d0c8351c8b3a99b43ae2d"
   end
 
   def install

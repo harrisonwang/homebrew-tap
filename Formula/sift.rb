@@ -7,18 +7,18 @@ class Sift < Formula
   on_macos do
     on_arm do
       url "https://github.com/harrisonwang/sift/releases/download/v0.1.0/sift_v0.1.0_aarch64-apple-darwin.tar.gz"
-      sha256 "b733330e9e7d55c2713a8635b0557dac117f4bbe7d88fe625f2ec4a768eb4b7b"
+      sha256 "fe96c6135969bfeaac9676bb4d81ea67f4c9ac743cbe92a29961f971f95b4cd5"
     end
 
     on_intel do
       url "https://github.com/harrisonwang/sift/releases/download/v0.1.0/sift_v0.1.0_x86_64-apple-darwin.tar.gz"
-      sha256 "d8c4df34a0fc5cfcfb86d751ade5b5378896effc06361295be268ec87ad0ab94"
+      sha256 "9991ec9052c2f57ef81b44db24fefa80b85da0affb8ac81a99a553b841b80aa6"
     end
   end
 
   on_linux do
     url "https://github.com/harrisonwang/sift/releases/download/v0.1.0/sift_v0.1.0_x86_64-unknown-linux-gnu.tar.gz"
-    sha256 "236faf0ca613cfc42ddc3090dbffde1c5b2397040db933029fd641cb4fcfe708"
+    sha256 "c3ae4b25f5ca8e1daa69cf2e54396db748cb4961cf4367a23f3b95a6f629ca24"
   end
 
   def install

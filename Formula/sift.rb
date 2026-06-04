@@ -1,24 +1,24 @@
 class Sift < Formula
   desc "Provider-driven technical news radar CLI"
   homepage "https://github.com/harrisonwang/sift"
-  version "0.2.0"
+  version "0.7.0"
   license "MIT"
 
   on_macos do
     on_arm do
-      url "https://github.com/harrisonwang/sift/releases/download/v0.2.0/sift_v0.2.0_aarch64-apple-darwin.tar.gz"
-      sha256 "961dffb83956f20685b9672d61c5775ce164a6401babba76e36bbf2e03a153fd"
+      url "https://github.com/harrisonwang/sift/releases/download/v0.7.0/sift_v0.7.0_aarch64-apple-darwin.tar.gz"
+      sha256 "8026d60965559d54ecdb646d22da78b60287098396759ba5584cd9948a082b16"
     end
 
     on_intel do
-      url "https://github.com/harrisonwang/sift/releases/download/v0.2.0/sift_v0.2.0_x86_64-apple-darwin.tar.gz"
-      sha256 "8ec11736615f279063e7c1c6a95d6db9c30527f8872351ec81e1b316bdee0e04"
+      url "https://github.com/harrisonwang/sift/releases/download/v0.7.0/sift_v0.7.0_x86_64-apple-darwin.tar.gz"
+      sha256 "17c28b09eef07131846b7bc3689acd78f7fa5b6956ad76cedd4ad78be5a5d202"
     end
   end
 
   on_linux do
-    url "https://github.com/harrisonwang/sift/releases/download/v0.2.0/sift_v0.2.0_x86_64-unknown-linux-gnu.tar.gz"
-    sha256 "324841d3eb2db94a26e5b0afa3d07e534fac33b3b8dff7101d30caaa8c751311"
+    url "https://github.com/harrisonwang/sift/releases/download/v0.7.0/sift_v0.7.0_x86_64-unknown-linux-gnu.tar.gz"
+    sha256 "07d61ac9935ed0f9c99086ccc3f14e7e5b18cb12961f89464d48478a98b8a22e"
   end
 
   def install

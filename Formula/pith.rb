@@ -1,24 +1,24 @@
 class Pith < Formula
   desc "Convert files and URLs to LLM-friendly markdown"
   homepage "https://github.com/harrisonwang/pith"
-  version "0.5.4"
+  version "0.6.2"
   license "MIT"
 
   on_macos do
     on_arm do
-      url "https://github.com/harrisonwang/pith/releases/download/v0.5.4/pith_v0.5.4_aarch64-apple-darwin.tar.gz"
-      sha256 "2ef3d96ddb1c581822c8a00b18ba21b89d332f3e823ff94822ca7c850d422316"
+      url "https://github.com/harrisonwang/pith/releases/download/v0.6.2/pith_v0.6.2_aarch64-apple-darwin.tar.gz"
+      sha256 "f6ef11d14d6fc7cd541fd06cac5d88cb006ef68044f5f97ea6a791da9c9164ff"
     end
 
     on_intel do
-      url "https://github.com/harrisonwang/pith/releases/download/v0.5.4/pith_v0.5.4_x86_64-apple-darwin.tar.gz"
-      sha256 "7036c6984b01b5739f77376a0d000482673aed568c9206eaba190e4a354e6528"
+      url "https://github.com/harrisonwang/pith/releases/download/v0.6.2/pith_v0.6.2_x86_64-apple-darwin.tar.gz"
+      sha256 "1dc4ae3c1eb379e96b32fefc7c78c41a695bc7b36f0f0c4eaaf38de36017141e"
     end
   end
 
   on_linux do
-    url "https://github.com/harrisonwang/pith/releases/download/v0.5.4/pith_v0.5.4_x86_64-unknown-linux-gnu.tar.gz"
-    sha256 "1acb71ce545496dcf737e7ed5cb92c92f441e90d773dc8e0d7d132ac7fba04e4"
+    url "https://github.com/harrisonwang/pith/releases/download/v0.6.2/pith_v0.6.2_x86_64-unknown-linux-gnu.tar.gz"
+    sha256 "0f8556c01d0c51107954f802d11b6b03b4eb0bc96da3603003d9eb5b19a45ca8"
   end
 
   def install

@@ -1,24 +1,24 @@
 class Spoor < Formula
   desc "Convert documents to LLM-friendly text — Markdown for prose, JSON for tables"
   homepage "https://github.com/harrisonwang/spoor"
-  version "0.8.16"
+  version "0.8.17"
   license "MIT"
 
   on_macos do
     on_arm do
-      url "https://github.com/harrisonwang/spoor/releases/download/v0.8.16/spoor_v0.8.16_aarch64-apple-darwin.tar.gz"
-      sha256 "6f483278ea6d892823e5fe788f43b8b13d5cba2310dc5f55f2839b42bf921e30"
+      url "https://github.com/harrisonwang/spoor/releases/download/v0.8.17/spoor_v0.8.17_aarch64-apple-darwin.tar.gz"
+      sha256 "23a6e99d4d9b7a73cc14979349365d875628ede8ef414b147ea4f6f393769dda"
     end
 
     on_intel do
-      url "https://github.com/harrisonwang/spoor/releases/download/v0.8.16/spoor_v0.8.16_x86_64-apple-darwin.tar.gz"
-      sha256 "420175802228ed80b585041b59c25546e7a8885b367b53e864fb389e854fecc0"
+      url "https://github.com/harrisonwang/spoor/releases/download/v0.8.17/spoor_v0.8.17_x86_64-apple-darwin.tar.gz"
+      sha256 "715b802eb09602afa3dab198611b76da447d10ef1852a0357632551a2f11b20e"
     end
   end
 
   on_linux do
-    url "https://github.com/harrisonwang/spoor/releases/download/v0.8.16/spoor_v0.8.16_x86_64-unknown-linux-gnu.tar.gz"
-    sha256 "219d091bee6534f69eb932d471ee6d4e7fbe789532fe9bf8227c4d6e540cd0c7"
+    url "https://github.com/harrisonwang/spoor/releases/download/v0.8.17/spoor_v0.8.17_x86_64-unknown-linux-gnu.tar.gz"
+    sha256 "9e404dd760d66c15d0608ed9c5837c825835e75d28f3e0dd5bc38a287d43267b"
   end
 
   def install

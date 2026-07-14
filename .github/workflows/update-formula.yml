@@ -62,6 +62,9 @@ jobs:
       - name: Checkout tap
         uses: actions/checkout@v4
 
+      - name: Test formula renderer
+        run: python3 -m unittest discover -s scripts -p 'test_*.py'
+
       - name: Checkout tool repo
         uses: actions/checkout@v4
         with:

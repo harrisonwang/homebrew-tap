@@ -1,24 +1,24 @@
 class Msd < Formula
   desc "Detect model substitution through local AI clients"
   homepage "https://github.com/harrisonwang/model-substitution-detector"
-  version "0.1.0"
+  version "0.2.0"
 
   on_macos do
     on_arm do
-      url "https://github.com/harrisonwang/model-substitution-detector/releases/download/v0.1.0/msd_v0.1.0_aarch64-apple-darwin.tar.gz"
-      sha256 "2bb59fc4ae14a5e2aa911debfb65f2901d45f4a93aeaff370079bafc8595a5cc"
+      url "https://github.com/harrisonwang/model-substitution-detector/releases/download/v0.2.0/msd_v0.2.0_aarch64-apple-darwin.tar.gz"
+      sha256 "f7db59f5f4cf09ba9e0bcc8c8f75aea7a941dc43793695799fe6b0806cbef7d7"
     end
 
     on_intel do
-      url "https://github.com/harrisonwang/model-substitution-detector/releases/download/v0.1.0/msd_v0.1.0_x86_64-apple-darwin.tar.gz"
-      sha256 "b642723e995a77291666dc3cd76b115070bd37717cd2ace13b3546a9b2fa7b93"
+      url "https://github.com/harrisonwang/model-substitution-detector/releases/download/v0.2.0/msd_v0.2.0_x86_64-apple-darwin.tar.gz"
+      sha256 "7b624f1d9875fdb9836a97c05cbf4852dd40eb1bb2b8618a8cf71ed25b384897"
     end
   end
 
   on_linux do
     depends_on arch: :x86_64
-    url "https://github.com/harrisonwang/model-substitution-detector/releases/download/v0.1.0/msd_v0.1.0_x86_64-unknown-linux-gnu.tar.gz"
-    sha256 "5e7fc2dad8aff4505e85e8696618df0b24ad1daa4c6367c7d3a367b8fc9f7e36"
+    url "https://github.com/harrisonwang/model-substitution-detector/releases/download/v0.2.0/msd_v0.2.0_x86_64-unknown-linux-gnu.tar.gz"
+    sha256 "a87eb453767a5f47a185b35e85412527266d436c4b1fc117beec4e58fad6ddb0"
   end
 
   def install
@@ -26,6 +26,6 @@ class Msd < Formula
   end
 
   test do
-    assert_match "msd 0.1.0", shell_output("#{bin}/msd --version")
+    assert_match "msd 0.2.0", shell_output("#{bin}/msd --version")
   end
 end

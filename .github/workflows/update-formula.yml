@@ -31,6 +31,9 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
+    outputs:
+      tool: ${{ steps.release.outputs.tool }}
+      component: ${{ steps.release.outputs.component }}
     steps:
       - name: Validate release source
         id: release
@@ -131,3 +134,36 @@ jobs:
             git commit -m "$TOOL $COMPONENT $TAG"
             git push
           fi
+
+  install-macos:
+    if: needs.update.outputs.tool == 'zipover'
+    needs: update
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [macos-15, macos-15-intel]
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - run: brew tap harrisonwang/tap
+      - name: Install and check CLI
+        if: needs.update.outputs.component == 'cli'
+        run: |
+          brew install harrisonwang/tap/zipover
+          brew test harrisonwang/tap/zipover
+      - name: Install and check Desktop
+        if: needs.update.outputs.component == 'desktop'
+        run: |
+          brew install --cask harrisonwang/tap/zipover-gui
+          /Applications/Zipover.app/Contents/MacOS/zipover-gui --version
+          codesign --verify --deep --strict /Applications/Zipover.app
+
+  install-linux:
+    if: needs.update.outputs.tool == 'zipover' && needs.update.outputs.component == 'cli'
+    needs: update
+    runs-on: ubuntu-22.04
+    steps:
+      - run: echo /home/linuxbrew/.linuxbrew/bin >> "$GITHUB_PATH"
+      - run: |
+          brew tap harrisonwang/tap
+          brew install harrisonwang/tap/zipover
+          brew test harrisonwang/tap/zipover

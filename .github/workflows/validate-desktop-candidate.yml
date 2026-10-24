@@ -1,0 +1,78 @@
+name: validate-desktop-candidate
+
+on:
+  repository_dispatch:
+    types: [desktop-candidate-released]
+  workflow_dispatch:
+    inputs:
+      tag:
+        required: true
+        description: Desktop candidate tag (v1.0.0-rc.1)
+
+permissions:
+  contents: read
+
+concurrency:
+  group: desktop-candidate-${{ github.event.client_payload.tag || inputs.tag }}
+  cancel-in-progress: false
+
+env:
+  GH_TOKEN: ${{ github.token }}
+  TOOL: zipover
+  REPO: harrisonwang/zipover-releases
+  TAG: ${{ github.event.client_payload.tag || inputs.tag }}
+
+jobs:
+  install-macos:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [macos-15, macos-15-intel]
+    runs-on: ${{ matrix.runner }}
+    env:
+      HOMEBREW_NO_AUTO_UPDATE: 1
+    steps:
+      - uses: actions/checkout@v7
+      - name: Verify candidate and render temporary cask
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ "$TAG" =~ ^v1\.[0-9]+\.[0-9]+-rc\.[1-9][0-9]*$ ]]
+          gh api "repos/$REPO/releases/tags/$TAG" > "$RUNNER_TEMP/release.json"
+          jq -e --arg tag "$TAG" '.tag_name == $tag and .prerelease == true and .draft == false' "$RUNNER_TEMP/release.json"
+          curl -fsSL "https://github.com/$REPO/releases/download/$TAG/SHA256SUMS.txt" -o "$RUNNER_TEMP/SHA256SUMS.txt"
+          python3 scripts/render_formula.py --template .github/homebrew/zipover-gui.rb.tmpl --checksums "$RUNNER_TEMP/SHA256SUMS.txt" --output "$RUNNER_TEMP/zipover-gui.rb" --verify-downloads
+          ruby -c "$RUNNER_TEMP/zipover-gui.rb"
+      - name: Install candidate through isolated Homebrew tap
+        shell: bash
+        run: |
+          set -euo pipefail
+          brew tap-new zipover-validation/rc
+          tap_dir=$(brew --repo zipover-validation/rc)
+          mkdir -p "$tap_dir/Casks" "$RUNNER_TEMP/zipover-applications"
+          cp "$RUNNER_TEMP/zipover-gui.rb" "$tap_dir/Casks/zipover-gui.rb"
+          brew install --cask --appdir="$RUNNER_TEMP/zipover-applications" zipover-validation/rc/zipover-gui
+          app="$RUNNER_TEMP/zipover-applications/Zipover.app"
+          test "$("$app/Contents/MacOS/zipover-gui" --version)" = "zipover ${TAG#v}"
+          codesign --verify --deep --strict "$app"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: candidate-cask-${{ matrix.runner }}
+          path: ${{ runner.temp }}/zipover-gui.rb
+
+  install-linux:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Verify candidate and install AppImage
+        env:
+          XDG_DATA_HOME: ${{ runner.temp }}/zipover-candidate-data
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ "$TAG" =~ ^v1\.[0-9]+\.[0-9]+-rc\.[1-9][0-9]*$ ]]
+          gh api "repos/$REPO/releases/tags/$TAG" > "$RUNNER_TEMP/release.json"
+          jq -e --arg tag "$TAG" '.tag_name == $tag and .prerelease == true and .draft == false' "$RUNNER_TEMP/release.json"
+          curl -fsSL https://raw.githubusercontent.com/harrisonwang/zipover/main/scripts/install-linux.sh -o "$RUNNER_TEMP/install-zipover.sh"
+          bash "$RUNNER_TEMP/install-zipover.sh" "$TAG"
+          test -s "$XDG_DATA_HOME/applications/zipover.desktop"
+          test "$("$XDG_DATA_HOME/zipover/zipover.AppImage" --appimage-extract-and-run --version)" = "zipover ${TAG#v}"

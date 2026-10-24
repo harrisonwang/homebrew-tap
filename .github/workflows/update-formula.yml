@@ -34,6 +34,7 @@ jobs:
     outputs:
       tool: ${{ steps.release.outputs.tool }}
       component: ${{ steps.release.outputs.component }}
+      tag: ${{ steps.release.outputs.tag }}
     steps:
       - name: Validate release source
         id: release
@@ -158,12 +159,24 @@ jobs:
           codesign --verify --deep --strict /Applications/Zipover.app
 
   install-linux:
-    if: needs.update.outputs.tool == 'zipover' && needs.update.outputs.component == 'cli'
+    if: needs.update.outputs.tool == 'zipover'
     needs: update
     runs-on: ubuntu-22.04
     steps:
-      - run: echo /home/linuxbrew/.linuxbrew/bin >> "$GITHUB_PATH"
-      - run: |
+      - if: needs.update.outputs.component == 'cli'
+        run: echo /home/linuxbrew/.linuxbrew/bin >> "$GITHUB_PATH"
+      - if: needs.update.outputs.component == 'cli'
+        run: |
           brew tap harrisonwang/tap
           brew install harrisonwang/tap/zipover
           brew test harrisonwang/tap/zipover
+      - name: Install and check Desktop AppImage
+        if: needs.update.outputs.component == 'desktop'
+        env:
+          TAG: ${{ needs.update.outputs.tag }}
+          XDG_DATA_HOME: ${{ runner.temp }}/zipover-test-data
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/harrisonwang/zipover/main/scripts/install-linux.sh -o "$RUNNER_TEMP/install-zipover.sh"
+          bash "$RUNNER_TEMP/install-zipover.sh" "$TAG"
+          test -s "$XDG_DATA_HOME/applications/zipover.desktop"
+          "$XDG_DATA_HOME/zipover/zipover.AppImage" --appimage-extract-and-run --version

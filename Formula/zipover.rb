@@ -1,24 +1,24 @@
 class Zipover < Formula
   desc "Sync clipboard and files across devices on a LAN"
   homepage "https://github.com/harrisonwang/zipover"
-  version "1.3.0"
+  version "1.3.1"
   license "MIT"
 
   on_macos do
     on_arm do
-      url "https://github.com/harrisonwang/zipover/releases/download/v1.3.0/zipover_v1.3.0_aarch64-apple-darwin.tar.gz"
-      sha256 "8a4ee96e36c3120f76be764f2fd883d28f712193c9b9615367cdf8f0b27fe01b"
+      url "https://github.com/harrisonwang/zipover/releases/download/v1.3.1/zipover_v1.3.1_aarch64-apple-darwin.tar.gz"
+      sha256 "c281c96a6a417b6f013c7a9a6e546e8738a1c5a2e2cfd0ce502f51da85f76cae"
     end
 
     on_intel do
-      url "https://github.com/harrisonwang/zipover/releases/download/v1.3.0/zipover_v1.3.0_x86_64-apple-darwin.tar.gz"
-      sha256 "734ff4b1575d6dcb53d61ab5decbe3d0a8c660478ffc9a6b4d02b8d3bf6d763e"
+      url "https://github.com/harrisonwang/zipover/releases/download/v1.3.1/zipover_v1.3.1_x86_64-apple-darwin.tar.gz"
+      sha256 "c735123185776574f18247d2cb95fa89141d81b86bdd70e5ee822c60599b64e8"
     end
   end
 
   on_linux do
-    url "https://github.com/harrisonwang/zipover/releases/download/v1.3.0/zipover_v1.3.0_x86_64-unknown-linux-gnu.tar.gz"
-    sha256 "82f270f36acccde48c6e26a6909e0f3f977e23fb27ae3a39754dd10318c9e23b"
+    url "https://github.com/harrisonwang/zipover/releases/download/v1.3.1/zipover_v1.3.1_x86_64-unknown-linux-gnu.tar.gz"
+    sha256 "77ab5d8e79404b02a04cea12cd2e1d6a4822f66e8067dc581f255d1bc745bdaf"
   end
 
   def install

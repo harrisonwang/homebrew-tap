@@ -1,17 +1,17 @@
 cask "zipover-gui" do
-  version "1.3.4"
+  version "1.3.5"
   name "Zipover"
   desc "Cross-device clipboard synchronization"
   homepage "https://github.com/harrisonwang/zipover-releases"
 
   on_arm do
-    url "https://github.com/harrisonwang/zipover-releases/releases/download/v1.3.4/zipover-gui_v1.3.4_aarch64-apple-darwin.dmg"
-    sha256 "1fd1dcda9a5dee55e69aaf823a610abfd2643c5648517cb35492495830a5811f"
+    url "https://github.com/harrisonwang/zipover-releases/releases/download/v1.3.5/zipover-gui_v1.3.5_aarch64-apple-darwin.dmg"
+    sha256 "654d6be1a5f607c633fad4dc9a4fb3345246fb2f5f7b26a49bceef718263a6df"
   end
 
   on_intel do
-    url "https://github.com/harrisonwang/zipover-releases/releases/download/v1.3.4/zipover-gui_v1.3.4_x86_64-apple-darwin.dmg"
-    sha256 "3291d38fd9c04775bf344dc183ab6134e0b7b93169b44222c72a495affc506c3"
+    url "https://github.com/harrisonwang/zipover-releases/releases/download/v1.3.5/zipover-gui_v1.3.5_x86_64-apple-darwin.dmg"
+    sha256 "72be572af3b7db05568e077e0a85de662fcd3d4fa9b5ae6c94e6ec07a14dde1d"
   end
 
   app "Zipover.app"

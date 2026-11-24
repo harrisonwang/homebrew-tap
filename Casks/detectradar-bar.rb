@@ -7,7 +7,7 @@ cask "detectradar-bar" do
   desc "Menu bar companion for DetectRadar showing exit IP, network type, and IPv6 leak alerts"
   homepage "https://detectradar.com/macos/"
 
-  depends_on macos: ">= :ventura"
+  depends_on macos: :ventura
 
   app "DetectRadarBar.app"
 

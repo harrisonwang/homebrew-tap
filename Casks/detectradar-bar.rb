@@ -1,6 +1,6 @@
 cask "detectradar-bar" do
-  version "0.1.0"
-  sha256 "517d27a56e5bb41b03994487a51f0d10308446af93ca80a786d3c6701aab9197"
+  version "0.1.1"
+  sha256 "ff614a86479fe52101bc66457d8fbce106edefa95573bda23622bbcf010a0435"
 
   url "https://dl.detectradar.com/macos/releases/macos-v#{version}/DetectRadarBar-v#{version}-macos-universal.dmg"
   name "DetectRadarBar"
